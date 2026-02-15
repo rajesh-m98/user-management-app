@@ -34,9 +34,9 @@ const UserList: React.FC<UserListProps> = ({
 
   return (
     <Grid container spacing={3} sx={{ mt: 1 }}>
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout">
         {users.map((user) => (
-          <Grid item xs={12} sm={6} key={user.id}>
+          <Grid size={{ xs: 12, sm: 6 }} key={user.id}>
             <UserCard user={user} onEdit={onEdit} onDelete={onDelete} />
           </Grid>
         ))}

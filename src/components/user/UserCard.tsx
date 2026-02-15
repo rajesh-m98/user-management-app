@@ -86,7 +86,7 @@ const UserCard: React.FC<UserCardProps> = ({ user, onEdit, onDelete }) => {
         <Box
           sx={{
             p: 1.5,
-            bg: "rgba(0,0,0,0.02)",
+            bgcolor: "rgba(0,0,0,0.02)",
             borderTop: "1px solid rgba(0,0,0,0.03)",
             display: "flex",
             justifyContent: "flex-end",

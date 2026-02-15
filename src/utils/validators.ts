@@ -5,5 +5,5 @@ export const validateEmail = (email: string): boolean => {
 
 export const validatePhone = (phone: string): boolean => {
     const re = /^\d{10}$/;
-    return re.test(phone);
+    return re.test(phone) && !isNaN(Number(phone));
 };
