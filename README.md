@@ -36,11 +36,11 @@ I used **Redux Toolkit** because it's the industry standard for professional pro
 ### 3. Styling (Tailwind + MUI)
 I used **Tailwind CSS** for the layout and custom animations because it's fast and flexible. I also used **Material UI** for complex components like Dialogs and Form Inputs to ensure a robust and premium feel.
 
-### 4. Advanced Validation
-I put extra effort into making the validation "interview-ready":
-- **Phone**: Clips to 10 digits, only allows numbers, and checks for valid Indian mobile prefixes (6-9).
-- **Email**: Includes a smart typo-check that suggests corrections for domains like "gamil.com".
-- **Name**: Restricts special characters and ensures clean formatting.
+### 4. Comprehensive Validation
+I implemented robust validation rules to ensure data integrity and a smooth user experience:
+- **Phone Number**: Strictly numeric-only input (10 digits) with validation for valid Indian mobile prefixes (6, 7, 8, 9).
+- **Email Address**: Includes a smart domain typo-check that suggests corrections for common misspellings (e.g., "gamil.com" -> "gmail.com").
+- **Name Fields**: Sanitizes input to prevent special characters and ensures professional formatting.
 
 ---
 
