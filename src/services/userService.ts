@@ -3,13 +3,10 @@ import { User, UserCreateInput } from '../types/user.types';
 
 const API_URL = 'https://jsonplaceholder.typicode.com/users';
 
-// Note: JSONPlaceholder is a mock API. POST/PUT/DELETE return the updated object 
-// but it's not actually persisted on the server.
 
 export const userService = {
     getUsers: async (): Promise<User[]> => {
         const response = await axios.get(API_URL);
-        // Map JSONPlaceholder fields to our schema
         return response.data.map((user: any) => ({
             id: user.id.toString(),
             firstName: user.name.split(' ')[0],

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  IconButton,
-  Box,
-  Avatar,
-} from "@mui/material";
+import { IconButton, Avatar } from "@mui/material";
 import {
   Edit as EditIcon,
   Delete as DeleteIcon,
@@ -26,95 +19,72 @@ const UserCard: React.FC<UserCardProps> = ({ user, onEdit, onDelete }) => {
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      whileHover={{ y: -5 }}
-      transition={{ duration: 0.3 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      whileHover={{ y: -4 }}
+      className="relative group h-full"
     >
-      <Card
-        sx={{
-          height: "100%",
-          borderRadius: "16px",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.06)",
-          border: "1px solid rgba(0,0,0,0.03)",
-          overflow: "hidden",
-          display: "flex",
-          flexDirection: "column",
-        }}
+      <div
+        className="absolute inset-0 top-1.5 left-1.5 -right-1.5 -bottom-1.5 bg-primary-main/10 rounded-[20px] z-[-1] 
+                   transition-all duration-500 group-hover:translate-x-1 group-hover:translate-y-1 group-hover:bg-primary-main/15"
+      />
+
+      <div
+        className="bg-white/90 backdrop-blur-md border border-slate-200 rounded-[20px] p-5 shadow-lg h-full flex flex-col
+                      transition-all duration-300 group-hover:shadow-blue-500/10 group-hover:border-blue-200"
       >
-        <CardContent sx={{ flexGrow: 1, pt: 3 }}>
-          <Box display="flex" alignItems="center" mb={2}>
-            <Avatar
-              sx={{
-                bgcolor: "primary.main",
-                width: 56,
-                height: 56,
-                mr: 2,
-                fontSize: "1.5rem",
-                fontWeight: 700,
-                boxShadow: "0 4px 12px rgba(25, 118, 210, 0.3)",
-              }}
-            >
+        <div className="flex items-center gap-4 mb-4">
+          <div className="relative">
+            <Avatar className="!w-14 !h-14 !text-xl !font-black !shadow-md !bg-gradient-to-br from-blue-600 to-blue-500">
               {user.firstName[0]}
               {user.lastName[0]}
             </Avatar>
-            <Box>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: 700, lineHeight: 1.2 }}
-              >
-                {user.firstName} {user.lastName}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                User ID: #{user.id.slice(0, 5)}
-              </Typography>
-            </Box>
-          </Box>
+            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 border-2 border-white rounded-full" />
+          </div>
 
-          <Box display="flex" alignItems="center" mb={1} color="text.secondary">
-            <EmailIcon fontSize="small" sx={{ mr: 1, opacity: 0.7 }} />
-            <Typography variant="body2">{user.email}</Typography>
-          </Box>
+          <div className="flex-1">
+            <h3 className="text-xl md:text-2xl font-black text-slate-800 leading-tight">
+              {user.firstName} {user.lastName}
+            </h3>
+            <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-black bg-blue-50 text-blue-600 mt-1 uppercase tracking-widest border border-blue-100/50">
+              ID: #{user.id.slice(0, 6)}
+            </span>
+          </div>
+        </div>
 
-          <Box display="flex" alignItems="center" color="text.secondary">
-            <PhoneIcon fontSize="small" sx={{ mr: 1, opacity: 0.7 }} />
-            <Typography variant="body2">{user.phoneNumber}</Typography>
-          </Box>
-        </CardContent>
+        <div className="space-y-3 bg-slate-50/80 p-4 rounded-xl border border-slate-100 flex-grow">
+          <div className="flex items-start text-slate-700">
+            <EmailIcon className="!text-[18px] mr-3 mt-0.5 text-blue-600/70 shrink-0" />
+            <span className="text-[15px] font-semibold break-all leading-tight">
+              {user.email}
+            </span>
+          </div>
+          <div className="flex items-center text-slate-700">
+            <PhoneIcon className="!text-[18px] mr-3 text-blue-600/70" />
+            <span className="text-[16px] font-bold text-slate-800 leading-none">
+              +91 {user.phoneNumber}
+            </span>
+          </div>
+        </div>
 
-        <Box
-          sx={{
-            p: 1.5,
-            bgcolor: "rgba(0,0,0,0.02)",
-            borderTop: "1px solid rgba(0,0,0,0.03)",
-            display: "flex",
-            justifyContent: "flex-end",
-            gap: 1,
-          }}
-        >
+        <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end gap-3">
           <IconButton
             size="small"
             onClick={() => onEdit(user)}
-            sx={{
-              color: "primary.main",
-              "&:hover": { bgcolor: "primary.lighter" },
-            }}
+            className="!bg-blue-50 !text-blue-600 hover:!bg-blue-600 hover:!text-white !transition-all !p-2"
           >
             <EditIcon fontSize="small" />
           </IconButton>
           <IconButton
             size="small"
             onClick={() => onDelete(user.id)}
-            sx={{
-              color: "error.main",
-              "&:hover": { bgcolor: "error.lighter" },
-            }}
+            className="!bg-red-50 !text-red-500 hover:!bg-red-500 hover:!text-white !transition-all !p-2"
           >
             <DeleteIcon fontSize="small" />
           </IconButton>
-        </Box>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 };

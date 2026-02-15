@@ -5,7 +5,8 @@ A production-ready, schema-driven User Management application built with React, 
 ## 🚀 Tech Stack
 
 - **Frontend**: React 18 + TypeScript
-- **Styling**: Material UI (MUI) + Framer Motion
+- **Styling**: Tailwind CSS + Material UI (MUI)
+- **Animations**: Framer Motion
 - **Tooling**: Vite
 - **API Client**: Axios
 - **Notifications**: React Hot Toast

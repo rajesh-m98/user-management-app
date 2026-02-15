@@ -1,5 +1,4 @@
 import React from "react";
-import { Grid, Box, Typography } from "@mui/material";
 import { User } from "../../types/user.types";
 import UserCard from "./UserCard";
 import Loader from "../common/Loader";
@@ -24,24 +23,28 @@ const UserList: React.FC<UserListProps> = ({
 
   if (users.length === 0) {
     return (
-      <Box textAlign="center" py={8}>
-        <Typography variant="h6" color="text.secondary">
-          No users found. Try adding one!
-        </Typography>
-      </Box>
+      <div className="flex flex-col items-center justify-center py-20 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+          <span className="text-4xl">👥</span>
+        </div>
+        <h3 className="text-xl font-bold text-slate-800">No users found</h3>
+        <p className="text-slate-500 mt-1">
+          Start by adding your first team member!
+        </p>
+      </div>
     );
   }
 
   return (
-    <Grid container spacing={3} sx={{ mt: 1 }}>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
       <AnimatePresence mode="popLayout">
         {users.map((user) => (
-          <Grid size={{ xs: 12, sm: 6 }} key={user.id}>
+          <div key={user.id} className="h-full">
             <UserCard user={user} onEdit={onEdit} onDelete={onDelete} />
-          </Grid>
+          </div>
         ))}
       </AnimatePresence>
-    </Grid>
+    </div>
   );
 };
 

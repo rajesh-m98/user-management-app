@@ -1,5 +1,10 @@
 import { FormFieldSchema } from '../../types/user.types';
-import { validateEmail, validatePhone } from '../../utils/validators';
+import {
+    validateEmailStrict,
+    validatePhoneIndia,
+    validateName,
+    validateLastName
+} from '../../utils/validators';
 
 export const userFormSchema: FormFieldSchema[] = [
     {
@@ -7,25 +12,27 @@ export const userFormSchema: FormFieldSchema[] = [
         label: 'First Name',
         type: 'text',
         required: true,
+        validation: validateName,
     },
     {
         name: 'lastName',
         label: 'Last Name',
         type: 'text',
         required: true,
+        validation: validateLastName,
     },
     {
         name: 'email',
         label: 'Email Address',
         type: 'email',
         required: true,
-        validation: (value: string) => validateEmail(value) || 'Invalid email format',
+        validation: validateEmailStrict,
     },
     {
         name: 'phoneNumber',
         label: 'Phone Number',
         type: 'tel',
         required: true,
-        validation: (value: string) => validatePhone(value) || 'Phone number must be 10 digits',
+        validation: validatePhoneIndia,
     },
 ];
