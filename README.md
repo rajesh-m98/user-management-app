@@ -1,66 +1,42 @@
-# Professional React CRUD Application
+# User Management App
 
-A production-ready, schema-driven User Management application built with React, TypeScript, and Material UI. This project demonstrates best practices in modular architecture, custom hooks, and dynamic form rendering.
+Hi! This is my submission for the React Developer test task. I've built a clean and fast user management dashboard where you can add, see, update, and delete users. 
 
-## 🚀 Tech Stack
+I focused on making the code easy to read and making sure the UI works well on both mobile and desktop.
 
-- **Frontend**: React 18 + TypeScript
-- **Styling**: Tailwind CSS + Material UI (MUI)
-- **Animations**: Framer Motion
-- **Tooling**: Vite
-- **API Client**: Axios
-- **Notifications**: React Hot Toast
-- **Mock Data**: JSONPlaceholder API
+## How to run this project
 
-## 🛠️ Key Features
+First, make sure you have Node.js installed on your computer.
 
-- **Schema-Driven Forms**: Fields are dynamically generated from a central configuration.
-- **Optimistic Updates**: UI updates instantly while the API request is in progress, with automatic rollback on failure.
-- **Clean Architecture**: Strict separation of concerns between services, hooks, and components.
-- **Responsive Design**: Polished, card-based layout that works seamlessly across devices.
-- **Custom Validation**: Built-in validation for emails, phone numbers, and required fields.
+1. Download the code and open the folder in your terminal.
+2. Run `npm install` to get all the necessary packages.
+3. Run `npm run dev` to start the app.
+4. Open your browser to the link shown in the terminal (usually http://localhost:5173).
 
-## 📦 Setup Instructions
+---
 
-1. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+## My Design Choices
 
-2. **Run Locally**:
-   ```bash
-   npm run dev
-   ```
+### 1. Adding new fields easily
+In the email, you mentioned that adding new fields like "Address" should be easy. To handle this, I used a **schema-based approach**. 
 
-3. **Build for Production**:
-   ```bash
-   npm run build
-   ```
+If you want to add a new field, you don't need to change the UI code. You just go to `src/components/user/userSchema.ts` and add the new field details to the list. The form will automatically show the new input and handle the validation for you.
 
-## ➕ How to add a new field
+### 2. State Management
+I used **Redux Toolkit** because it's the standard way to handle data in professional projects. It keeps the data organized and makes it easy to add features like "Optimistic Updates" (where the UI updates instantly while the data is saving in the background).
 
-To add a new field (e.g., "Date of Birth"), you only need to modify `src/components/user/userSchema.ts` and `src/types/user.types.ts`:
+### 3. Styling
+I used **Tailwind CSS** for the layout because it's very fast and keeps the bundle size small. I also used a bit of **Material UI** for things like the pop-up boxes (Dialogs) and icons to give it a polished, professional look.
 
-1. Update `User` interface in `src/types/user.types.ts`.
-2. Add the field object to the `userFormSchema` array:
+### 4. Validation
+I put extra effort into the form validation. For example:
+- The phone number field only accepts numbers and follows the Indian format (+91).
+- The email field checks for common typos (like if someone types "gamil" instead of "gmail").
+- Names can't have weird special characters.
 
-```typescript
-{
-  name: "dateOfBirth",
-  label: "Date of Birth",
-  type: "date",
-  required: false
-}
-```
+---
 
-The form will automatically render this new field without any changes to `UserForm.tsx`.
+## API Info
+I used the **JSONPlaceholder** API for the user data. It's a mock API, so while you can add or delete users in the app, the changes won't stay forever on the server (since it's a public testing API), but they will work perfectly in your current browser session.
 
-## 🗒️ Assumptions
-
-- The application uses `JSONPlaceholder` as a mock backend. Note that while the API returns success status codes, changes are not persisted on the server.
-- Phone numbers are expected to be 10-digit strings.
-- The "ID" field is treated as a string for consistency.
-
-## 🚢 Deployment
-
-This project is ready for deployment on platforms like Vercel, Netlify, or AWS Amplify. Simply connect your repository and use the build command `npm run build` with the output directory `dist`.
+Thanks for checking out my work!
